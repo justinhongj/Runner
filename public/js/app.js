@@ -9,9 +9,8 @@ function preload() {
 	game.scale.setScreenSize(true);
 
 	game.load.image('background', 'images/background.jpg');
-	game.load.spritesheet('scott1', 'images/scott1.png', 108, 140);
-	game.load.spritesheet('scott2', 'images/scott2.png', 108, 140);
-	game.load.spritesheet('scott1Jump', 'images/scott_jump.gif', 43.9, 76);
+	game.load.spritesheet('scott1', 'images/scott1.png', 50.4, 76);
+	game.load.spritesheet('scott2', 'images/scott2.png', 50.4, 76);
 
 }
 
@@ -23,8 +22,9 @@ function create() {
 	scott1.scale.x = game.rnd.realInRange(0.25, 0.25);
 	scott1.scale.y = game.rnd.realInRange(0.25, 0.25);
 
-	scott1.animations.add('run', [0, 1, 2, 3, 4, 5, 6, 7],15 ,true);
-	scott1.animations.play('run');
+	// scott1.animations.add('run', [0, 1, 2, 3, 4, 5, 6, 7],15 ,true);
+	scott1.animations.add('jump', [8, 9, 10, 11, 12, 13, 14, 15, 16, 17], 15, true);
+	scott1.animations.play('jump');
 
 	// scott1Jump = game.add.sprite(width*0.18, 240, 'scott1Jump');
 	// scott1Jump.animations.add('jump', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9], 18, true);
@@ -33,14 +33,13 @@ function create() {
 	scott2.scale.x = game.rnd.realInRange(0.25, 0.25);
 	scott2.scale.y = game.rnd.realInRange(0.25, 0.25);
 
-	scott2.animations.add('run', [0, 1, 2, 3, 4, 5, 6, 7],15 ,true);
-	scott2.animations.play('run');
+	// scott2.animations.add('run', [0, 1, 2, 3, 4, 5, 6, 7],15 ,true);
+	scott2.animations.add('jump', [8, 9, 10, 11, 12, 13, 14, 15, 16, 17], 15, true);
+	scott2.animations.play('jump');
 
 	cursors = game.input.keyboard.createCursorKeys();
 }
 
 function update() {
-	// if (cursors.up.onDown) {
-	// 	scott1Jump.animations.play('jump');
-	// }
+
 }
