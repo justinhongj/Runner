@@ -73,7 +73,6 @@ function create() {
 	scott1.body.gravity.y = 1000;
 
 
-	cursors = game.input.keyboard.createCursorKeys();
 }
 
 function update() {
@@ -81,12 +80,27 @@ function update() {
 	game.physics.arcade.collide(scott1, line1);
 	game.physics.arcade.collide(scott2, line2);
 
-	if (cursors.up.isDown) {
-		scott1.animations.play('jump');
-		scott1.body.velocity.y = -250;
+	// cursors = game.input.keyboard.createCursorKeys();
+
+	if (game.input.keyboard.isDown(Phaser.Keyboard.Q)) {
+		if (scott1.body.velocity.y === 0) {
+			scott1.animations.play('jump');
+			scott1.body.velocity.y = -350;
+		}
 	}
 
 	if (scott1.body.velocity.y === 0) {
 		scott1.animations.play('run');
+	}
+
+	if (game.input.keyboard.isDown(Phaser.Keyboard.P)) {
+		if (scott2.body.velocity.y === 0) {
+			scott2.animations.play('jump');
+			scott2.body.velocity.y = -350;
+		}
+	}
+
+	if (scott2.body.velocity.y === 0) {
+		scott2.animations.play('run');
 	}
 }
