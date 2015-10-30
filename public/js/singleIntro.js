@@ -31,13 +31,16 @@ function create() {
 	// MAIN MENU
 	////////////////
 
-	player1 = game.add.text(game.width/2, 80, "Press 'Q' to Jump", {fill: '#ffffff'});
+	instructions = game.add.text(game.width/2, 60, 'Control both runners to avoid the spikes!', {fill: '#ffffff'});
+	instructions.anchor.set(0.5);
+
+	player1 = game.add.text(game.width/2, 140, "Press 'Q' to Jump", {fill: '#637A9D'});
 	player1.anchor.set(0.5);
 
-	player2 = game.add.text(game.width/2, 160, "Press 'P' to Jump", {fill: '#ffffff'});
+	player2 = game.add.text(game.width/2, 210, "Press 'P' to Jump", {fill: '#CA85B4'});
 	player2.anchor.set(0.5);
 
-	start = game.add.text(game.width/2, 240, "Press 'Space' to Start");
+	start = game.add.text(game.width/2, 270, "Press 'Space' to Start");
 	start.anchor.set(0.5);
 
 
@@ -45,13 +48,13 @@ function create() {
 	// ANIMATIONS
 	////////////////
 
-	scott1 = game.add.sprite(game.width/4, 100, 'scott1');
+	scott1 = game.add.sprite(game.width/4, 140, 'scott1');
 	scott1.anchor.set(0.5);
 	scott1.animations.add('run', [0, 1, 2, 3, 4, 5, 6, 7],15 ,true);
 	scott1.animations.add('jump', [8, 9, 10, 11, 12, 13, 14, 15, 16, 17], 15, true);
 	scott1.animations.play('run');
 
-	scott2 = game.add.sprite((game.width/4), 180, 'scott2');
+	scott2 = game.add.sprite((game.width/4), 210, 'scott2');
 	scott2.anchor.set(0.5);
 	scott2.animations.add('run', [0, 1, 2, 3, 4, 5, 6, 7],15 ,true);
 	scott2.animations.add('jump', [8, 9, 10, 11, 12, 13, 14, 15, 16, 17], 15, true);
