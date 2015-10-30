@@ -11,21 +11,14 @@ function preload() {
 	game.load.spritesheet('background', 'images/streaks.png', 250, 480);
 	game.load.spritesheet('scott1', 'images/scott1.png', 58, 76);
 	game.load.spritesheet('scott2', 'images/scott2.png', 58, 76);
-	game.load.audio('theme', 'sounds/theme.mp3');
+	game.load.audio('intro', 'sounds/intro.mp3');
 
 }
 
 function create() {
 
-	theme = game.add.audio('theme');
-	playTheme = function() {
-		theme.play();
-		setInterval(function() {
-			theme.play();
-		}, 98000);
-	};
-
-	playTheme();
+	intro = game.add.audio('intro');
+	intro.play();
 
 	////////////////
 	// BACKGROUND
@@ -42,35 +35,30 @@ function create() {
 	// MAIN MENU
 	////////////////
 
-	text = game.add.text(game.width/2, 60, 'Dual Runner', {fill: '#ffffff'});
-	text.anchor.set(0.5);
+	instructions = game.add.text(game.width/2, 60, 'Jump to avoid the spikes!', {fill: '#ffffff'});
+	instructions.anchor.set(0.5);
 
-	single = game.add.text(game.width/2, 140, "Press '1' For Single Player");
-	single.anchor.set(0.5);
+	player1 = game.add.text(game.width/2, 140, "Press 'Q' to Jump", {fill: '#637A9D'});
+	player1.anchor.set(0.5);
 
-	versus = game.add.text(game.width/2, 200, "Press '2' For Versus Mode");
-	versus.anchor.set(0.5);
+	player2 = game.add.text(game.width/2, 210, "Press 'P' to Jump", {fill: '#CA85B4'});
+	player2.anchor.set(0.5);
 
-	// single = game.add.text(game.width/2, 120, 'Single Player', {fill: '#ffffff'});
-	// single.anchor.set(0.5);
-	// single.inputEnabled = true;
-
-	// versus = game.add.text(game.width/2, 160, 'Versus', {fill: '#ffffff'});
-	// versus.anchor.set(0.5);
-	// versus.inputEnabled = true;
+	start = game.add.text(game.width/2, 270, "Press 'Space' to Start");
+	start.anchor.set(0.5);
 
 
 	////////////////
 	// ANIMATIONS
 	////////////////
 
-	scott1 = game.add.sprite(game.width/4, 170, 'scott1');
+	scott1 = game.add.sprite(game.width/4, 140, 'scott1');
 	scott1.anchor.set(0.5);
 	scott1.animations.add('run', [0, 1, 2, 3, 4, 5, 6, 7],15 ,true);
 	scott1.animations.add('jump', [8, 9, 10, 11, 12, 13, 14, 15, 16, 17], 15, true);
 	scott1.animations.play('run');
 
-	scott2 = game.add.sprite((game.width/4)*3, 170, 'scott2');
+	scott2 = game.add.sprite((game.width/4), 210, 'scott2');
 	scott2.anchor.set(0.5);
 	scott2.animations.add('run', [0, 1, 2, 3, 4, 5, 6, 7],15 ,true);
 	scott2.animations.add('jump', [8, 9, 10, 11, 12, 13, 14, 15, 16, 17], 15, true);
@@ -80,28 +68,15 @@ function create() {
 
 function update() {
 
-	if (game.input.keyboard.isDown(Phaser.Keyboard.ONE)) {
-		$('body').fadeOut(3500, function(){
-			window.location.replace("http://localhost:4567/singleIntro");
-		});
-	}
-
-	if (game.input.keyboard.isDown(Phaser.Keyboard.TWO)) {
-		$('body').fadeOut(3500, function(){
-			window.location.replace("http://localhost:4567/versusIntro");
-		});
+	if (game.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR)) {
+			window.location.replace('http://localhost:4567/versus');
+			$('body').fadeOut(3000, function(){startGame();});
 	}
 
 }
 
 // function single() {
 // 	$('body').fadeOut(3500, function(){
-// 		window.location.replace("http://localhost:4567/singleIntro");
-// 	});
-// }
-
-// function versus() {
-// 	$('body').fadeOut(3500, function(){
-// 		window.location.replace("http://localhost:4567/versusIntro");
+// 		window.location.replace("http://localhost:4567/single");
 // 	});
 // }

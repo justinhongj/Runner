@@ -283,12 +283,12 @@ function update() {
 		gameover();
 	}
 
-	if (game.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR)) {
+	if (game.input.keyboard.isDown(Phaser.Keyboard.ONE)) {
 			window.location.replace('http://localhost:4567/singleIntro');
 			$('body').fadeOut(3000, function(){startGame();});
 	}
 
-	if (game.input.keyboard.isDown(Phaser.Keyboard.M)) {
+	if (game.input.keyboard.isDown(Phaser.Keyboard.TWO)) {
 			window.location.replace('http://localhost:4567');
 			$('body').fadeOut(3000);
 	}
@@ -347,9 +347,9 @@ function gameover() {
 	text = game.add.text(game.width/2, 40, 'GAME OVER', {fill: '#ffffff'});
 	text.anchor.set(0.5);
 
-	restart = game.add.text(game.width/2, 100, "Press 'Space' to Play Again");
+	restart = game.add.text(game.width/2, 100, "Press '1' to Play Again");
 	restart.anchor.set(0.5);
-	home = game.add.text(game.width/2, 200, "Press 'M' to Return to the Main Menu");
+	home = game.add.text(game.width/2, 200, "Press '2' to Return to the Main Menu");
 	home.anchor.set(0.5);
 
 	scott1.body.velocity.x = 400;
