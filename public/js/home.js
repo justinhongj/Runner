@@ -11,10 +11,21 @@ function preload() {
 	game.load.spritesheet('background', 'images/streaks.png', 250, 480);
 	game.load.spritesheet('scott1', 'images/scott1.png', 58, 76);
 	game.load.spritesheet('scott2', 'images/scott2.png', 58, 76);
+	game.load.audio('theme', 'sounds/theme.mp3');
 
 }
 
 function create() {
+
+	theme = game.add.audio('theme');
+	playTheme = function() {
+		theme.play();
+		setInterval(function() {
+			theme.play();
+		}, 98000);
+	};
+
+	playTheme();
 
 	////////////////
 	// BACKGROUND
@@ -44,9 +55,6 @@ function create() {
 	// versus = game.add.text(game.width/2, 160, 'Versus', {fill: '#ffffff'});
 	// versus.anchor.set(0.5);
 	// versus.inputEnabled = true;
-
-	// single.events.onInputDown.add(single);
-	// versus.events.onInputDown.add(versus);
 
 
 	////////////////

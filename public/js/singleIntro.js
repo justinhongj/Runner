@@ -11,10 +11,14 @@ function preload() {
 	game.load.spritesheet('background', 'images/streaks.png', 250, 480);
 	game.load.spritesheet('scott1', 'images/scott1.png', 58, 76);
 	game.load.spritesheet('scott2', 'images/scott2.png', 58, 76);
+	game.load.audio('intro', 'sounds/intro.mp3');
 
 }
 
 function create() {
+
+	intro = game.add.audio('intro');
+	intro.play();
 
 	////////////////
 	// BACKGROUND

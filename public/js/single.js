@@ -18,10 +18,33 @@ function preload() {
 	game.load.image('spikeUp', 'images/spike_up.png');
 	game.load.image('spikeDown', 'images/spike_down.png');
 	game.load.image('rock', 'images/rock.png');
+	game.load.audio('music', 'sounds/run.mp3');
+	game.load.audio('jump', 'sounds/jump.wav');
+	game.load.audio('hit', 'sounds/hit.wav');
 
 }
 
+var jump;
+var hit;
+
 function create() {
+
+	////////////////
+	// AUDIO
+	////////////////
+
+	music = game.add.audio('music');
+	playMusic = function() {
+		music.play();
+		setInterval(function() {
+			music.play();
+		}, 96000);
+	};
+
+	playMusic();
+
+	jump = game.add.audio('jump');
+	hit = game.add.audio('hit');
 
 	////////////////
 	// BACKGROUND
@@ -172,6 +195,7 @@ function update() {
 		if (scott1.body.velocity.y === 0) {
 			scott1.animations.play('jump');
 			scott1.body.velocity.y = -370;
+			jump.play();
 		}
 	}
 
@@ -188,6 +212,7 @@ function update() {
 		if (scott2.body.velocity.y === 0) {
 			scott2.animations.play('jump');
 			scott2.body.velocity.y = -370;
+			jump.play();
 		}
 	}
 	if (scott2.body.velocity.y === 0) {
@@ -222,6 +247,7 @@ function update() {
 	if (game.physics.arcade.overlap(scott1, spikes)) {
 		scott1.body.velocity.x = -300;
 		window.setTimeout(scott1Normalize, 200);
+		// hit.play();
 	}
 	function scott1Normalize() {
 		scott1.body.velocity.x = 0;
@@ -235,6 +261,7 @@ function update() {
 	if (game.physics.arcade.overlap(scott2, spikes)) {
 		scott2.body.velocity.x = -300;
 		window.setTimeout(scott2Normalize, 200);
+		// hit.play();
 	}
 	function scott2Normalize() {
 		scott2.body.velocity.x = 0;
