@@ -14,7 +14,7 @@ function preload() {
 	game.load.spritesheet('scott1', 'images/scott1.png', 58, 76);
 	game.load.spritesheet('scott2', 'images/scott2.png', 58, 76);
 	game.load.spritesheet('floor', 'images/floor1.png', 250, 33);
-	game.load.image('line', 'images/purp_line.png');
+	game.load.image('line', 'images/blank_line.png');
 	game.load.image('spikeUp', 'images/spike_up.png');
 	game.load.image('spikeDown', 'images/spike_down.png');
 
@@ -69,7 +69,7 @@ function create() {
 	spawnSpikeUp1();
 
 	(function loop() {
-		var rand = Math.round(Math.random() * 1000) + 600;
+		var rand = Math.round(Math.random() * 1000) + 400;
 		setTimeout(function() {
 			spawnSpikeUp1();
 			loop();
@@ -110,7 +110,7 @@ function create() {
 	spawnSpikeUp2();
 
 	(function loop() {
-		var rand = Math.round(Math.random() * 1000) + 600;
+		var rand = Math.round(Math.random() * 1000) + 400;
 		setTimeout(function() {
 			spawnSpikeUp2();
 			loop();
@@ -126,28 +126,6 @@ function create() {
 }
 
 
-function spawnSpikeUp1() {
-	spikeUp1 = game.add.sprite(game.width, 91, 'spikeUp');
-	spikeUp1.scale.y = 0.22;
-	spikeUp1.scale.x = 0.5;
-	game.physics.arcade.enable(spikeUp1);
-	spikeUp1.body.velocity.x = -600;
-	spikes.add(spikeUp1);
-}
-
-function spawnSpikeUp2() {
-	spikeUp2 = game.add.sprite(game.width, 238, 'spikeUp');
-	spikeUp2.scale.y = 0.22;
-	spikeUp2.scale.x = 0.5;
-	game.physics.arcade.enable(spikeUp2);
-	spikeUp2.body.velocity.x = -600;
-	spikes.add(spikeUp2);
-}
-
-function player1Win() {
-	spikes.kill();
-	text = game.add.text(20, 20, 'Player 1 Wins!!', {fill: '#ffffff'});
-}
 
 
 function update() {
@@ -239,3 +217,48 @@ function update() {
 	}
 }
 
+
+function spawnSpikeUp1() {
+	spikeUp1 = game.add.sprite(game.width, 91, 'spikeUp');
+	spikeUp1.scale.y = 0.22;
+	spikeUp1.scale.x = 0.5;
+	game.physics.arcade.enable(spikeUp1);
+	spikeUp1.body.velocity.x = -600;
+	spikes.add(spikeUp1);
+}
+
+function spawnSpikeUp2() {
+	spikeUp2 = game.add.sprite(game.width, 238, 'spikeUp');
+	spikeUp2.scale.y = 0.22;
+	spikeUp2.scale.x = 0.5;
+	game.physics.arcade.enable(spikeUp2);
+	spikeUp2.body.velocity.x = -600;
+	spikes.add(spikeUp2);
+}
+
+
+function player1Win() {
+	text = game.add.text(20, 20, 'Player 1 Wins!!', {fill: '#ffffff'});
+
+	scott1.body.velocity.x = 400;
+	spikeUp1.body.velocity.x = -200;
+	spikeUp2.body.velocity.x = -200;
+
+
+	$('body').fadeOut(4000, function() {
+		window.setTimeout((window.location.replace("http://localhost:4567"), 2000));
+	});
+}
+
+function player2Win() {
+	text = game.add.text(20, 160, 'Player 2 Wins!!', {fill: '#ffffff'});
+
+	scott2.body.velocity.x = 400;
+	spikeUp1.body.velocity.x = -200;
+	spikeUp2.body.velocity.x = -200;
+
+
+	$('body').fadeOut(4000, function() {
+		window.location.replace("http://localhost:4567")
+	})
+}
